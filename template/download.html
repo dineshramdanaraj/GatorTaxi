@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>Download File</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .file-details {
+            margin-bottom: 20px;
+        }
+
+        .file-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .file-details li {
+            margin-bottom: 10px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-container .btn {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    {% load static%}
+    <div class="container">
+        <h1>Download File</h1>
+        <div class="file-details">
+            <label for="fileDetails" class="form-label">Selected File Details:</label>
+            <ul>
+                <li>File Name: <span id="fileName"></span></li>
+                <li>File Size: <span id="fileSize"></span> bytes</li>
+            </ul>
+        </div>
+        <div class="btn-container">
+            <a href="{% url 'file_download' file_name %}" class="btn btn-primary" download>Download</a>
+            <button class="btn btn-secondary" onclick="redirectToHomePage()">Home Page</button>
+        </div>
+    </div>
+    <iframe src="{% static 'output_file.txt' %}" width="100%" height="600px"></iframe>
+
+    <!-- Bootstrap JS (Optional, if you want to include additional functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // JavaScript code to display file details
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve the file name and size from the Django template variables
+            var fileName = "{{ file_name }}";
+            var fileSize = "{{ file_size }}";
+
+            // Update the HTML elements with the file details
+            document.getElementById('fileName').textContent = fileName;
+            document.getElementById('fileSize').textContent = fileSize;
+        });
+
+        function redirectToHomePage() {
+            // Redirect to the home page (index.html)
+            window.location.href = "{% url 'home' %}";
+        }
+    </script>
+</body>
+</html>

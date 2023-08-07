@@ -1,0 +1,24 @@
+# Compiler
+JAVAC = javac
+
+# Compiler flags
+JFLAGS = -g
+
+# Directory for .class files
+CLASSES_DIR = .
+
+# Source files
+SRCS = GatorTaxi.java MinHeap.java redBlackTree.java Ride.java Node.java Color.java
+
+# Object files
+OBJS = $(SRCS:%.java=%.class)
+
+# Targets
+default: run
+
+%.class: %.java
+	$(JAVAC) $(JFLAGS) $< 
+
+build: $(OBJS)
+
+run: build
