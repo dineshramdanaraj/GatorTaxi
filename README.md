@@ -33,12 +33,12 @@ Access the web interface by visiting `http://localhost:8000` in your browser. Up
 
 ## File Input Format
 The input file should contain ride details in the following format:
-Input test data will be given in the following format.
-Insert(rideNumber, rideCost, tripDuration)
-Print(rideNumber)
-Print (rideNumber1,rideNumber2)
-UpdateTrip(rideNumber, newTripDuration)
-GetNextRide()
+\\
+Insert(rideNumber, rideCost, tripDuration)\\
+Print(rideNumber)\\
+Print (rideNumber1,rideNumber2)\\
+UpdateTrip(rideNumber, newTripDuration)\\
+GetNextRide()\\
 CancelRide(rideNumber)
 
 
